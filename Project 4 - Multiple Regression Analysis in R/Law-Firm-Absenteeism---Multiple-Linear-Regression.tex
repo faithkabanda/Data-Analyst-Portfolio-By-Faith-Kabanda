@@ -1,0 +1,504 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Law Firm Absenteeism - Multiple Linear Regression},
+  pdfauthor={Faith Kabanda},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Law Firm Absenteeism - Multiple Linear Regression}
+\author{Faith Kabanda}
+\date{}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\hypertarget{project-summary}{%
+\subsection{Project Summary}\label{project-summary}}
+
+A Director at a hypothetical small Zimbabwean law firm is concerned
+about employee absenteeism among staff. She believes that organisation
+commitment is probably the most significant contributing factor. She
+selected a random sample of 31 employee files and noted their level of
+absenteeism (in days p.a.). She sent a confidential questionnaire to
+each of the selected employees from which an organisation commitment
+index was derived. The Director is interested in the possible effect
+that other factors such as job tenure (time in months at the
+organisation), and grade (1 = clerk, 2 = consultant, 3 = lawyer) have on
+the level of employee absenteeism. Multiple linear regression of the
+data with commitment, job tenure and grade as independent variables is
+used to help the Director understand factors, if any, that are
+contributing to employees' absenteeism. NB: For the variable grade, two
+dummy variables were used.
+
+\hypertarget{import-dataset-using-readxl}{%
+\subsubsection{Import Dataset Using
+Readxl}\label{import-dataset-using-readxl}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(readxl)}
+\NormalTok{law\_firm\_data }\OtherTok{\textless{}{-}} \FunctionTok{read\_excel}\NormalTok{(}\StringTok{"C:/Users/Faith Kabanda/OneDrive/Documents/Data Analysis Portfolio By Faith Kabanda/Data{-}Analyst{-}Portfolio{-}By{-}Faith{-}Kabanda/Project 4 {-} Multiple Regression Analysis in R/Law Firm Absenteeism Data {-} Multiple Linear Regression.xlsx"}\NormalTok{, }
+    \AttributeTok{sheet =} \StringTok{"Data"}\NormalTok{)}
+\FunctionTok{head}\NormalTok{(law\_firm\_data) }\CommentTok{\#to get the first few rows of the data}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6 x 7
+##   Absence Commitment Tenure `Employee Grade` Clerk Consultant Lawyer
+##     <dbl>      <dbl>  <dbl>            <dbl> <dbl>      <dbl>  <dbl>
+## 1      23         49    143                2     0          1      0
+## 2      26         40    125                2     0          1      0
+## 3      18         69     95                2     0          1      0
+## 4      12         72     84                1     1          0      0
+## 5      30         26    164                3     0          0      1
+## 6       9         78     67                1     1          0      0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Create a table}
+
+\FunctionTok{library}\NormalTok{(kableExtra)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'kableExtra' was built under R version 4.2.1
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in !is.null(rmarkdown::metadata$output) && rmarkdown::metadata$output
+## %in% : 'length(x) = 3 > 1' in coercion to 'logical(1)'
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(knitr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'knitr' was built under R version 4.2.1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(dplyr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'dplyr'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:kableExtra':
+## 
+##     group_rows
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(reshape2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'reshape2' was built under R version 4.2.1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{law\_firm\_data }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{head}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{kable}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{column\_spec}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{6}\NormalTok{,}\AttributeTok{border\_left =}\NormalTok{ T, }\AttributeTok{border\_right =}\NormalTok{ T) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{kable\_styling}\NormalTok{(}\StringTok{"striped"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{table}
+\centering
+\begin{tabular}{|>{}r|||>{}r|||>{}r|||>{}r|||>{}r|||>{}r||r}
+\hline
+Absence & Commitment & Tenure & Employee Grade & Clerk & Consultant & Lawyer\\
+\hline
+23 & 49 & 143 & 2 & 0 & 1 & 0\\
+\hline
+26 & 40 & 125 & 2 & 0 & 1 & 0\\
+\hline
+18 & 69 & 95 & 2 & 0 & 1 & 0\\
+\hline
+12 & 72 & 84 & 1 & 1 & 0 & 0\\
+\hline
+30 & 26 & 164 & 3 & 0 & 0 & 1\\
+\hline
+9 & 78 & 67 & 1 & 1 & 0 & 0\\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#This code gives 6 columns in total and kable\_styling gives proportional rows and columns giving rise equally size cells/small boxes. Lastly, removing  \%\textgreater{}\% head() will give the full table.}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{understanding-the-data-using-summary-statistics}{%
+\subsubsection{Understanding The Data Using Summary
+Statistics}\label{understanding-the-data-using-summary-statistics}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(law\_firm\_data}\SpecialCharTok{$}\NormalTok{Absence)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    5.00   13.50   20.00   19.65   25.50   36.00
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(law\_firm\_data}\SpecialCharTok{$}\NormalTok{Commitment)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   19.00   40.00   49.00   51.74   65.00   82.00
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(law\_firm\_data}\SpecialCharTok{$}\NormalTok{Tenure)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    24.0    65.5   120.0   107.6   144.5   189.0
+\end{verbatim}
+
+\hypertarget{understanding-the-relationship-between-absence-and-commitment}{%
+\subsubsection{Understanding The Relationship Between Absence And
+Commitment}\label{understanding-the-relationship-between-absence-and-commitment}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\NormalTok{scatterplot}\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(law\_firm\_data, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Commitment, }\AttributeTok{y =}\NormalTok{ Absence)) }\SpecialCharTok{+} \FunctionTok{geom\_point}\NormalTok{()}\SpecialCharTok{+} \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method =}\NormalTok{ lm, }\AttributeTok{se =} \ConstantTok{FALSE}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{xlab}\NormalTok{(}\StringTok{"Level of Commitment"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{ylab}\NormalTok{(}\StringTok{"Level of Absence"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"A Scatter Plot of Organisation Commitment Against Employee Absenteeism"}\NormalTok{) }\CommentTok{\#geom\_smooth(method = lm) adds the regression line. Note that "lm" gives the straight line and "se" gives a shaded region around the line.}
+\NormalTok{scatterplot}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `geom_smooth()` using formula 'y ~ x'
+\end{verbatim}
+
+\includegraphics{Law-Firm-Absenteeism---Multiple-Linear-Regression_files/figure-latex/unnamed-chunk-4-1.pdf}
+
+According to the scatter plot above, as the level of absenteeism
+increases, the level of commitment decreases. This shows that
+absenteeism and commitment have a strong negative linear relationship
+with one another, as commitment increases, the absenteeism reduces. In
+addition, the data points come to forming somewhat of a downwards
+diagonal line along the negative gradient line when plotted, proving
+that there is a correlation between the two variables. There are no
+visible outliers.
+
+\hypertarget{multiple-linear-regression}{%
+\subsubsection{Multiple Linear
+Regression}\label{multiple-linear-regression}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#generate the model}
+\NormalTok{model}\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(law\_firm\_data}\SpecialCharTok{$}\NormalTok{Absence }\SpecialCharTok{\textasciitilde{}}\NormalTok{ law\_firm\_data}\SpecialCharTok{$}\NormalTok{Commitment }\SpecialCharTok{+}\NormalTok{ law\_firm\_data}\SpecialCharTok{$}\NormalTok{Tenure }\SpecialCharTok{+}\NormalTok{ law\_firm\_data}\SpecialCharTok{$}\NormalTok{Clerk }\SpecialCharTok{+}\NormalTok{ law\_firm\_data}\SpecialCharTok{$}\NormalTok{Consultant, }\AttributeTok{data =}\NormalTok{ law\_firm\_data)}
+\FunctionTok{summary}\NormalTok{(model)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = law_firm_data$Absence ~ law_firm_data$Commitment + 
+##     law_firm_data$Tenure + law_firm_data$Clerk + law_firm_data$Consultant, 
+##     data = law_firm_data)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -5.4191 -1.9394  0.0302  1.2563  6.0740 
+## 
+## Coefficients:
+##                          Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)              31.09777    4.41690   7.041 1.78e-07 ***
+## law_firm_data$Commitment -0.33890    0.07005  -4.838 5.15e-05 ***
+## law_firm_data$Tenure      0.04615    0.01818   2.538   0.0175 *  
+## law_firm_data$Clerk       1.21395    2.42045   0.502   0.6202    
+## law_firm_data$Consultant  1.86753    1.67983   1.112   0.2764    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 3.207 on 26 degrees of freedom
+## Multiple R-squared:  0.8496, Adjusted R-squared:  0.8264 
+## F-statistic: 36.71 on 4 and 26 DF,  p-value: 2.434e-10
+\end{verbatim}
+
+\hypertarget{statistical-significance-of-the-independent-variables}{%
+\subsubsection{Statistical Significance Of The Independent
+Variables}\label{statistical-significance-of-the-independent-variables}}
+
+\begin{verbatim}
+H0: βi  = 0 & H1: βi ≠ 0
+Rejection criteria is as follows: Reject H0 if |Tcal| > Tα/2(n-k)
+\end{verbatim}
+
+Commitment
+
+\begin{itemize}
+\tightlist
+\item
+  Let i= 1 = commitment
+\item
+  Tα/2(31-- 4 =27, 0.025) = 2.05
+\item
+  Tcal = -4.838
+\end{itemize}
+
+In this case, with commitment, the \textbar Tcal\textbar{} = -4.838
+\textgreater{} Tα/2(27, 0.025) = 2.05, therefore we reject H0 and
+conclude that the coefficient β1 is not significantly different from
+zero at 5\%. The implication is that commitment has no influence on
+absenteeism.
+
+Tenure Level
+
+\begin{itemize}
+\tightlist
+\item
+  Let i= 2 = tenure
+\item
+  Tα/2(27) = 2.05
+\item
+  Tcal = 2.538
+\end{itemize}
+
+In this case, with job tenure, the \textbar Tcal\textbar{} = 2.538
+\textgreater{} Tα/2(27, 0.025) = 2.05, therefore we reject H0 and
+conclude that the coefficient β2, Tenure is not significantly different
+from zero at 5\%. The implication is that job tenure has no influence on
+absenteeism.
+
+Clerk Level
+
+\begin{itemize}
+\tightlist
+\item
+  Let i= 3 = Clerk
+\item
+  Tα/2(27) = 2.05
+\item
+  Tcal = 0.502
+\end{itemize}
+
+In this case, with lecturer level, the \textbar Tcal\textbar{} =
+0.501537884 \textless{} Tα/2(27, 0.025) = 2.05, therefore we fail to
+reject H0 and conclude that the coefficient β3 is significantly
+different from zero at 5\%. The implication is that clerk level of
+employment has significant influence on absenteeism.
+
+Consultant Level
+
+\begin{itemize}
+\tightlist
+\item
+  Let i= 4 = Consulatant
+\item
+  Tα/2(27) = 2.05
+\item
+  Tcal = 1.112
+\end{itemize}
+
+In this case, with senior lecturer level, the \textbar Tcal\textbar{} =
+0. 1.112 \textless{} Tα/2(27, 0.025) = 2.05, therefore we fail to reject
+H0 and conclude that the coefficient β4 is significantly different from
+zero at 5\%. The implication is that the consultant level of employment
+has significant influence on absenteeism.
+
+\hypertarget{significance-of-the-regression-model-at-0.05-level-of-significance}{%
+\subsubsection{Significance of the Regression Model at 0.05 Level of
+Significance}\label{significance-of-the-regression-model-at-0.05-level-of-significance}}
+
+\begin{itemize}
+\tightlist
+\item
+  Y = Β0 + Β1X1 B2X2 + B3X3
+\item
+  H0: β1 = β2 = β3 = \ldots{} βk= 0
+\item
+  H1: Not all slope coefficients are simultaneously zero.
+\end{itemize}
+
+For a given level of significance α = 0.05, numerator degrees of freedom
+k −1 and denominator degrees of freedom n − k, the critical value is
+given by F (k −1, n − k)α. Therefore, we will use F (4,26) α = 0.05 =
+2.7426. Fcal from the ANOVA table is 36.70775776
+
+Since Fcal = 36.70775776 \textgreater{} F (4,26)0.05 = 2.7426, we reject
+H0 and conclude that not all slope coefficients are simultaneously zero.
+Hence there is a significant relationship between the variables in the
+linear regression model of the data set.
+
+\hypertarget{prediction-and-forecasting}{%
+\subsubsection{Prediction And
+Forecasting}\label{prediction-and-forecasting}}
+
+Predicting the level of absence of an employee who has a tenure of 10
+years and an organisational commitment index of 50 for all 3 levels of
+commitment are as follows:
+
+\emph{Absence = 1.214Clerk + 1.868Consulatant + 0.04615Tenure -0.3389
+Commitment + 31.098}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  Absence for Clerk Absence = 1.214(1) + 1.868(0) + 0.04615(10 x12) +
+  -0.3389 (50) + 31.098 Absence = 20.90517271
+\item
+  Absence for Consultant Absence = 1.214(0) + 1.868(1) + 0.04615(10 x12)
+  + -0.3389 (50) + 31.098 Absence = 21.55875238
+\item
+  Absence for Lawyer Absence = 1.214(0) + 1.868(0) + 0.04615(10 x12) +
+  -0.3389 (50) + 31.098 Absence = 19.69122602
+\end{enumerate}
+
+\end{document}

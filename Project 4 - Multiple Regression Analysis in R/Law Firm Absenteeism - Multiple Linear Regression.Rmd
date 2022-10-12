@@ -1,0 +1,160 @@
+---
+title: "Law Firm Absenteeism - Multiple Linear Regression"
+author: "Faith Kabanda"
+output: 
+  word_document: 
+    toc: yes
+  html_document: 
+    toc: yes
+always_allow_html: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Project Summary
+
+A Director at a hypothetical small Zimbabwean law firm is concerned about employee absenteeism among staff. She believes that organisation commitment is probably the most significant contributing factor. She selected a random sample of 31 employee files and noted their level of absenteeism (in days p.a.). She sent a confidential questionnaire to each of the selected employees from which an organisation commitment index was derived. The Director is interested in the possible effect that other factors such as job tenure (time in months at the organisation), and grade (1 = clerk, 2 = consultant, 3 = lawyer) have on the level of employee absenteeism. Multiple linear regression of the data with commitment, job tenure and grade as independent variables is used to help the Director understand factors, if any, that are contributing to employees’ absenteeism. NB: For the variable grade, two dummy variables were used.
+
+### Import Dataset Using Readxl
+
+```{r}
+library(readxl)
+law_firm_data <- read_excel("C:/Users/Faith Kabanda/OneDrive/Documents/Data Analysis Portfolio By Faith Kabanda/Data-Analyst-Portfolio-By-Faith-Kabanda/Project 4 - Multiple Regression Analysis in R/Law Firm Absenteeism Data - Multiple Linear Regression.xlsx", 
+    sheet = "Data")
+head(law_firm_data) #to get the first few rows of the data
+
+```
+
+```{r}
+#Create a table
+
+library(kableExtra)
+library(knitr)
+library(dplyr)
+library(reshape2)
+law_firm_data %>% head() %>% kable() %>% column_spec(1:6,border_left = T, border_right = T) %>% kable_styling("striped") 
+#This code gives 6 columns in total and kable_styling gives proportional rows and columns giving rise equally size cells/small boxes. Lastly, removing  %>% head() will give the full tabl
+# Generate table [from kable() function] in MS Word: Highlight raw data > insert > insert table > convert text to table > select  the right # of columns > enter.
+
+
+```
+
+
+### Understanding The Data Using Summary Statistics
+
+```{r}
+summary(law_firm_data$Absence)
+summary(law_firm_data$Commitment)
+summary(law_firm_data$Tenure)
+```
+
+
+### Understanding The Relationship Between Absence And Commitment
+
+```{r}
+library(ggplot2)
+scatterplot<- ggplot(law_firm_data, aes(x = Commitment, y = Absence)) + geom_point()+ geom_smooth(method = lm, se = FALSE) + xlab("Level of Commitment") + ylab("Level of Absence") + ggtitle("A Scatter Plot of Organisation Commitment Against Employee Absenteeism") #geom_smooth(method = lm) adds the regression line. Note that "lm" gives the straight line and "se" gives a shaded region around the line.
+scatterplot
+
+```
+
+
+According to the scatter plot above, as the level of absenteeism increases, the level of commitment decreases. This shows that absenteeism and commitment have a strong negative linear relationship with one another, as commitment increases, the absenteeism reduces. In addition, the data points come to forming somewhat of a downwards diagonal line along the negative gradient line when plotted, proving that there is a correlation between the two variables. There are no visible outliers.
+
+### Multiple Linear Regression
+
+
+```{r}
+#generate the model
+model<- lm(law_firm_data$Absence ~ law_firm_data$Commitment + law_firm_data$Tenure + law_firm_data$Clerk + law_firm_data$Consultant, data = law_firm_data)
+summary(model)
+```
+
+
+### Statistical Significance Of The Independent Variables
+
+
+
+    H0: βi  = 0 & H1: βi ≠ 0
+    Rejection criteria is as follows: Reject H0 if |Tcal| > Tα/2(n-k)
+
+Commitment
+
+
+* Let i= 1 = commitment
+* Tα/2(31– 4 =27, 0.025) = 2.05
+* Tcal  = -4.838
+
+
+In this case, with commitment, the |Tcal| = -4.838 > Tα/2(27, 0.025) = 2.05, therefore we reject H0 and conclude that the coefficient β1 is not significantly different from zero at 5%. The implication is that commitment has no influence on absenteeism.
+
+Tenure
+
+
+* Let i= 2 = tenure
+* Tα/2(27) = 2.05
+* Tcal  = 2.538
+
+
+In this case, with job tenure, the |Tcal| = 2.538 > Tα/2(27, 0.025) = 2.05, therefore we reject H0 and conclude that the coefficient β2, Tenure is not significantly different from zero at 5%. The implication is that job tenure has no influence on absenteeism.
+
+
+Clerk Level
+
+
+* Let i= 3 = Clerk
+* Tα/2(27) = 2.05
+* Tcal  = 0.502
+
+
+In this case, with lecturer level, the |Tcal| = 0.501537884 < Tα/2(27, 0.025) = 2.05, therefore we fail to reject H0 and conclude that the coefficient β3 is significantly different from zero at 5%. The implication is that clerk level of employment has significant influence on absenteeism.
+
+
+Consultant Level
+
+
+* Let i= 4 = Consulatant
+* Tα/2(27) = 2.05
+* Tcal  = 1.112
+
+
+In this case, with senior lecturer level, the |Tcal| = 0. 1.112 < Tα/2(27, 0.025) = 2.05, therefore we fail to reject H0 and conclude that the coefficient β4 is significantly different from zero at 5%. The implication is that the consultant level of employment has significant influence on absenteeism.
+
+
+### Significance of the Regression Model at 0.05 Level of Significance
+
+
+* Y = Β0 + Β1X1 B2X2 + B3X3
+* H0: β1 = β2 = β3  = … βk= 0
+* H1: Not all slope coefficients are simultaneously zero.
+    
+    
+For a given level of significance α = 0.05, numerator degrees of freedom k −1 and denominator degrees of freedom n − k, the critical value is given by F (k −1, n − k)α. Therefore, we will use  F (4,26) α = 0.05 = 2.7426. Fcal from the ANOVA table is 36.70775776
+
+
+Since Fcal = 36.70775776 > F (4,26)0.05 = 2.7426, we reject H0 and conclude that not all slope coefficients are simultaneously zero. Hence there is a significant relationship between the variables in the linear regression model of the data set. 
+
+
+### Prediction And Forecasting
+
+
+Predicting the level of absence of an employee who has a tenure of 10 years and an organisational commitment index of 50 for all 3 levels of commitment are as follows:
+
+
+<font size="1"> *Absence = 1.214Clerk + 1.868Consulatant + 0.04615Tenure -0.3389 Commitment + 31.098* </font>
+
+
+a)	Absence for Clerk
+Absence = 1.214(1) + 1.868(0) + 0.04615(10 x12) + -0.3389 (50) + 31.098
+Absence = 20.90517271
+
+b)	Absence for Consultant
+Absence = 1.214(0) + 1.868(1) + 0.04615(10 x12) + -0.3389 (50) + 31.098
+Absence = 21.55875238
+
+c)	Absence for Lawyer
+Absence = 1.214(0) + 1.868(0) + 0.04615(10 x12) + -0.3389 (50) + 31.098
+Absence = 19.69122602
+

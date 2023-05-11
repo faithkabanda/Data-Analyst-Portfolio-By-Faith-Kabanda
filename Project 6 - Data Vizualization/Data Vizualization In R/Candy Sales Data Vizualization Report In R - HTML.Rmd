@@ -1,0 +1,52 @@
+---
+title: "Candy Sales Data Vizualization Report In R"
+output: html_document
+date: "`r Sys.Date()`"
+---
+
+<style>
+body{
+text-align: justify}
+</style>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = F, message = F, warning = F, comment = NA)
+```
+
+## Overview
+
+ * A hypothetical candy shop in Zimbabwe makes and distributes candy across the country. The new sales manager requested an MS Excel dataset of the sales from 2020 to 2021 in order to have an understanding of how well the candy shop was doing before she came on board. The candies and snacks are distributed to four cities, namely: Bulawayo, Victoria Falls, Mutare and Harare. The candies and snacks are grouped into 4 categories, namely: Bars, Crackers, Cookies and Snacks. Python is used to authenticate, create and update Google Sheets file. In addition, graphs are generated in order make use of data visualization to present the findings.
+ 
+```{r}
+pacman::p_load(readxl, tidyverse, reshape2, knitr, dplyr, ggplot2, ftExtra,scales,knitr,ggthemes,plotly, kableExtra, colorDF) #pacman loads all packages at once
+
+colors <- c( "#A9711E","#118467", "#6D847A", "#BB8755", "#82ACA0", "#9C7F61",
+            "#D88523", "#83A593", "#E6A168", "#9DD0C0", "#BE9D7C", "#A2C8B9",
+            "#EBCABA", "#A1DBD3")# the lift colors
+
+data <- read_excel("Data Files/Project 2 - Google Sheets API - Candy Sales Excel Raw Data.xlsx", sheet = "Sheet1")
+
+
+#data.head()
+#DATA CLEANING
+
+#1 rename column
+
+data %>% rename("Order_Quantity" = "Quantity")
+
+#2 change currency column details to ZWL
+data$Product[data$Product == "Carrot"] <- "Nuts"
+
+data$Product[data$Product == "Bran"] <- "Plain"
+
+data$Category[data$Category == "Bars"] <- "Cereal Bars"
+
+print(data)
+
+```
+
+ * Data cleaning included renaming columns, deleting columns, manipulating entries. 
+ * Firstly, by renaming "Quantity"" column to "Order_Quantity"" in order to make it more specific and easier to understand that the quantity is the number of units ordered.
+ * Secondly, Data collectors mislabeled products types as well as product categories which were corrected using the dplyr package.
+
+

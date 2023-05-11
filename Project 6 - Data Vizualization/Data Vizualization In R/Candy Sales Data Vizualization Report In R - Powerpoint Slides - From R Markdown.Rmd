@@ -1,0 +1,10 @@
+---
+title: "Candy Sales Data Vizualization Report In R"
+output: powerpoint_presentation
+date: "`r Sys.Date()`"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = F, message = F, warning = F, comment = NA)
+```
+

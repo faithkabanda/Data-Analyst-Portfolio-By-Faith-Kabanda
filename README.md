@@ -24,3 +24,13 @@ Do the rest for all reports of the same city i.e.
 Do the rest for all cities
 
 Step 2: Consolidate all
+
+Project 2
+
+Project 3
+
+Project 4
+
+Project 5
+
+Project 6

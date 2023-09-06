@@ -1,0 +1,152 @@
+---
+title: "Exploratory Data Analysis on Game Sales in R"
+output: html_document
+date: "`r Sys.Date()`"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = F, comment = NA, warning = F)
+```
+
+## Exploratory Data Analysis on Game Sales in R
+
+The data analysis pipeline begins with importing or creating an analysis-ready dataset. 
+ 
+```{r}
+#load packages to be used
+
+pacman::p_load(readxl, tidyverse, reshape2, knitr, dplyr, ggplot2, ftExtra,scales,knitr,ggthemes,plotly, kableExtra, colorDF, lubridate, janitor, ggrepel)
+
+#load colours to be used in vizualizations 
+
+colours <- c("#D58A94","#16E2F5", "#560319", "#52595D","#151B54","#006A4E","#E2F516", "#DC143C", "#01F9C6", "#9C7F61", "#50C878", "#513B1C","#00BFFF", "#7D0552","#008000", "#9DD0C0", "#BE9D7C", "#A2C8B9","#583759", "#F6BE00", "#F5F5F5", "#8B008B", "#5865F2", "#FA2A55", "#F88017", "#ADF802", "#0002FF") 
+
+```
+
+```{r}
+
+#import clean dataset
+
+data <- read.csv("clean game sales.csv")
+
+#get idea of data as a neat table
+
+head(data) %>% kbl() %>% kable_material(c("striped", "hover"))
+```
+
+### Stage 1 - Summarizing
+
+This stages will help us understand the data through descriptive statistics. The benefits of this stage are as follows:
+
+ * we will have a basic information about variables in our dataset.
+ * we will get an idea of potential relationships between variables.
+ 
+```{r}
+#summarize each varibable in the dataset
+
+summary(data) %>% kbl %>% kable_material(c("striped", "hover"))
+
+```
+
+```{r}
+#categorical
+
+
+
+```
+
+
+### TRansforming The Data
+
+```{r}
+
+print(unique(data$Platform))
+
+```
+
+```{r}
+
+data_trans  <- data %>% mutate(game = case_when(Platform == "PS3" |Platform == "PS4" | Platform == "PS2" | Platform == "PSP" ~ "Playstation",
+                                                
+                                 TRUE ~ "Other"))
+
+head(data_trans)                  
+```
+
+### Stage 3 - Vizualizing The Data
+
+
+```{r}
+#create a histogram of the variables
+
+ mutate(age_groups = ifelse(age<25, "18 - 24",
+                             ifelse(age<35, "25 - 34",
+                                    ifelse(age<45, "35 - 45", "45+"))))
+
+data %>%
+  mutate(grouped_platfroms = ifelse(Platform =  ) )
+  group_by(Platform) %>%
+  tally() %>%
+  adorn_percentages('col') %>%
+  mutate(perc = paste(round(n*100, 2), "%")) %>%
+  ggplot(aes(x = "", y = n, fill = Platform, label = perc)) +
+  geom_bar(stat = "identity", position = "fill") +
+  geom_text(position = position_fill(vjust = 0.5), size = 2.5) +
+  coord_polar("y") +
+  theme_void() +
+  labs(title = "Distribution Of Platform") #+ scale_fill_manual(values = c(colours))
+
+
+#frequency on Platform
+ggplot(data, aes(x = Platform)) +
+  geom_bar(bins = 100, fill = colours[5]) +
+  labs(title = "Frequency of Sales By Platfrom ", x = "Platform", y ="count") +
+  theme_economist()
+  
+
+```
+#### Year
+
+```{r}
+#pie chart
+
+
+
+#Frequency on years
+
+ggplot(data, aes( x = Year)) +
+  geom_histogram(bins = 100, fill = colours[5]) +
+  labs(title = "Histgram Of Frequency of Sales Yearly ", x = "Year", y ="count") +
+  theme_economist()
+
+```
+
+#### Genre
+
+```{r}
+
+#pie chart
+
+data %>%
+  group_by(Genre) %>%
+  tally() %>%
+  adorn_percentages('col') %>%
+  mutate(perc = paste(round(n*100, 2), "%")) %>%
+  ggplot(aes(x = "", y = n, fill = Genre, label = perc)) +
+  geom_bar(stat = "identity", position = "fill") +
+  geom_text(position = position_fill(vjust = 0.5), size = 2.5) +
+  coord_polar("y") +
+  theme_void() +
+  labs(title = "Distribution Of Genre") + 
+  scale_fill_manual(values = c(colours))
+
+#frequency on Genre
+ggplot(data, aes(x = Genre)) +
+  geom_bar(bins = 100, fill = colours[5]) +
+  labs(title = "Frequency of Sales By Genre ", x = "Genre", y ="count") +
+  theme_economist()
+  
+```
+
+
+
